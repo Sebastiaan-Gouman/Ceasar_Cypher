@@ -46,3 +46,10 @@ print("Versleutelde tekst:", encrypted_text)
 
 decrypted_text = caesar_cipher(encrypted_text, -shift)
 print("Ontsleutelde tekst:", decrypted_text)
+
+num = 0
+
+for x in range(0, 26):
+    decrypted_text = caesar_cipher(encrypted_text, num)
+    print("Brute Force:", decrypted_text)
+    num +=1
