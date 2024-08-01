@@ -3,7 +3,7 @@ def sanitize_input(input):
     final_string = remove_spaces.lower()
     return final_string
 
-# print(sanitize_input("Test met spaties"))
+print(sanitize_input("Test met spaties"))
 
 
 
@@ -14,7 +14,7 @@ def sanitize_input(input):
 # lower_case = with_underscores.lower()
 # print(lower_case)
 
-to_use = "Test met spaties"
+to_use = input("text om te gebruiken: ")
 
 def caesar_cipher(text, shift):
     # Resultaat string
@@ -50,6 +50,6 @@ print("Ontsleutelde tekst:", decrypted_text)
 num = 0
 
 for x in range(0, 26):
-    decrypted_text = caesar_cipher(encrypted_text, num)
+    decrypted_text = caesar_cipher(encrypted_text, -num)
     print("Brute Force:", decrypted_text)
     num +=1
