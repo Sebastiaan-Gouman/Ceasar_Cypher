@@ -1,6 +1,9 @@
 import argparse
 from sanitize import sanitize_input
 from cypher import caesar_cipher
+from welcome import welcome_message
+
+welcome_message()
 
 # Create an argument parser
 parser = argparse.ArgumentParser(description='Update dataset.json with a new file.')
@@ -9,7 +12,7 @@ parser = argparse.ArgumentParser(description='Update dataset.json with a new fil
 parser.add_argument('-s', '--sanitize', action='store_true', help='Removes spaces and sets all characters to lower case' )
 parser.add_argument('-ec', '--encrypt', action='store_true', help='Encypts or decrypts cypher' )
 parser.add_argument('-dc', '--decrypt', action='store_true', help='Encypts or decrypts cypher' )
-parser.add_argument('-bf', '--brute_force', action='store_true', help='''Brute force decrypted message ''' )
+parser.add_argument('-bf', '--brute_force', action='store_true', help='Brute force decrypted message' )
 
 # Parse the command-line arguments
 args = parser.parse_args()
