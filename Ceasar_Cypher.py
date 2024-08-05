@@ -1,48 +1,48 @@
-import argparse
 from sanitize import sanitize_input
 from cypher import caesar_cipher
 from welcome import welcome_message
 
 welcome_message()
 
-# Create an argument parser
-parser = argparse.ArgumentParser(description='Update dataset.json with a new file.')
+while True:
+    choice = input("Choose option (1, 2, 3, 4), 'h' for help or 'q' to quit: ")
 
-# Add the file argument
-parser.add_argument('-s', '--sanitize', action='store_true', help='Removes spaces and sets all characters to lower case' )
-parser.add_argument('-ec', '--encrypt', action='store_true', help='Encypts or decrypts cypher' )
-parser.add_argument('-dc', '--decrypt', action='store_true', help='Encypts or decrypts cypher' )
-parser.add_argument('-bf', '--brute_force', action='store_true', help='Brute force decrypted message' )
+    if choice == "q":
+        print("Goodbye!")
+        break
 
-# Parse the command-line arguments
-args = parser.parse_args()
+    if choice == "1":
+        to_use = input("text om te gebruiken: ")
+        print(sanitize_input(to_use))
 
-if args.sanitize == True:
-    to_use = input("text om te gebruiken: ")
-    print(sanitize_input(to_use))
+    elif choice == "2":
+        to_use = input("text om te gebruiken: ")
+        shift = int(input("shift om te gebruiken: "))
 
-if args.encrypt == True:
-    to_use = input("text om te gebruiken: ")
-    shift = int(input("shift om te gebruiken: "))
+        # Voorbeeld gebruik
+        text = sanitize_input(to_use)
+        encrypted_text = caesar_cipher(text, shift)
+        print("Versleutelde tekst:", encrypted_text)
 
-    # Voorbeeld gebruik
-    text = sanitize_input(to_use)
-    encrypted_text = caesar_cipher(text, shift)
-    print("Versleutelde tekst:", encrypted_text)
+    elif choice == "3":
+        to_use = input("text om te gebruiken: ")
+        shift = int(input("shift om te gebruiken: "))
 
-if args.decrypt == True:
-    to_use = input("text om te gebruiken: ")
-    shift = int(input("shift om te gebruiken: "))
+        decrypted_text = caesar_cipher(to_use, -shift)
+        print("Ontsleutelde tekst:", decrypted_text)
 
-    decrypted_text = caesar_cipher(to_use, -shift)
-    print("Ontsleutelde tekst:", decrypted_text)
+    elif choice == "4":
+        encrypted_text = input("text om te gebruiken: ")
 
-if args.brute_force == True:
-    encrypted_text = input("text om te gebruiken: ")
+        num = 0
 
-    num = 0
+        for x in range(0, 26):
+            decrypted_text = caesar_cipher(encrypted_text, -num)
+            print("Brute Force:", decrypted_text)
+            num += 1
 
-    for x in range(0, 26):
-        decrypted_text = caesar_cipher(encrypted_text, -num)
-        print("Brute Force:", decrypted_text)
-        num += 1
+    elif choice == "h":
+        welcome_message()
+
+    else:
+        print("Invalid input, try again..")
