@@ -32,13 +32,18 @@ while True:
         print("Ontsleutelde tekst:", decrypted_text)
 
     elif choice == "4":
-        encrypted_text = input("text om te gebruiken: ")
+        with open("input.txt") as input_file:
+            brute_force_input = input_file.read()
+
+        print("Brute force input from file:", brute_force_input)
+
+        encrypted_text = brute_force_input
 
         num = 0
 
         for x in range(0, 26):
             decrypted_text = caesar_cipher(encrypted_text, -num)
-            print("Brute Force:", decrypted_text)
+            print("Brute force output:", decrypted_text)
             num += 1
 
     elif choice == "h":
