@@ -25,6 +25,8 @@ Since the new_char line might be a little complicated, let me explain it in more
 2. Now `ord(char) - ascii_offset` simply subtracts the value from the `char` from the `ascii_offset`. For example, `ord('c')` would be 99, and it would subtract 97, which would give us 2. This would mean that 'c' has the second position in the alphabet (zero indexed, that is).
 3. The next step `ord(char) - ascii_offset + shift` adds the shift. This is just a simple addition. If the shift is '3', the 'c' from the previous step now gets moved to position 5, which is an 'f'.
 4. This modulo part `% 26` makes sure this also works when the shift exceeds the alphabet limits. For example, if we add 3 to the 'z' (position 25, remember the zero index) it gets position 28, and `28 % 26 = 2` which corresponds with 'c'.
+5. Now we need to add the offset one more time with: `+ ascii_offset`, so that it shifts back to the right position. 
+6. Since we have constantly been using ASCII tabel numbers instead of letters we need to convert it with `chr(...)`. For example, `chr(70)` would give us 'F'.  
 
 ```
 def caesar_cipher(text, shift):
@@ -56,6 +58,10 @@ def sanitize_input(input):
 ### welcome_message
 The welcome message does exactly what you might expect it to do. 
 No much to explain here.
+
+# GitHub
+If you have come this far, I assume you have been looking through everything and might have noticed the little stormy Git history. I found it rather confusing at times, and so I experimented some with adding, ignoring and deleting files here and there.
+The commands I learned are `git rm --cached test.py` and `git commit -m "Stop tracking test.py"` to remove the cashed version of a file, and to commit the changes to the Git history. I will keep experimenting with this to get the hang of it.
 
 
 # Credits
